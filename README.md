@@ -35,7 +35,8 @@ your repo access and to practice PR'ing with your team *before* you start
 coding!
 
 - Abdul Qadeer Shah: [GitHub](https://github.com/shahSpider) / [LinkedIn](https://linkedin.com/in/abdul-qadeer-shah)
-- Teammate name #2: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
+- Elijah Soladoye: [GitHub](https://github.com/shodown96) / [LinkedIn](https://linkedin.com/in/elijah-soladoye)
+- Teammate name #3: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
 
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
