@@ -32,11 +32,11 @@ Meeting Agenda templates (located in the `/docs` directory in this repo):
 Everyone on your team should add their name along with a link to their GitHub
 & optionally their LinkedIn profiles below. Do this in Sprint #1 to validate
 your repo access and to practice PR'ing with your team *before* you start
-coding!
+coding!   
 
 - Abdul Qadeer Shah: [GitHub](https://github.com/shahSpider) / [LinkedIn](https://linkedin.com/in/abdul-qadeer-shah)
 - Elijah Soladoye: [GitHub](https://github.com/shodown96) / [LinkedIn](https://linkedin.com/in/elijah-soladoye)
 - Chinedu Olekah: [GitHub](https://github.com/kenako1) / [LinkedIn](https://www.linkedin.com/in/chinedu-olekah)
-
+- Adewale Agboke: [GitHub](https://github.com/adewale_agboke) / [LinkedIn](https://www.linkedin.com/in/adewaleagboke)
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
