@@ -38,5 +38,6 @@ coding!
 - Elijah Soladoye: [GitHub](https://github.com/shodown96) / [LinkedIn](https://linkedin.com/in/elijah-soladoye)
 - Chinedu Olekah: [GitHub](https://github.com/kenako1) / [LinkedIn](https://www.linkedin.com/in/chinedu-olekah)
 - Adewale Agboke: [GitHub](https://github.com/adewale_agboke) / [LinkedIn](https://www.linkedin.com/in/adewaleagboke)
+- Vandna Kapoor:  [GitHub](https://github.com/vandnakapoor19) / [LinkedIn](https://www.linkedin.com/in/vandnakapoor/)
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
