@@ -14,9 +14,7 @@ you like the best.
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | AI Interview Question Generator (Web Application)|  The AI Interview Question Generator is a web application that helps people prepare for job interviews by generating role-specific interview questions using AI.
 
-Users select the role they are preparing for, such as Scrum Master, Product Owner, Developer, or UX/UI Designer, and the system generates realistic interview questions tailored to that role. The questions are designed to help users practice both technical and soft skills at any time.
-
-The product focuses on simplicity and usefulness. It allows users to quickly reach practice mode without unnecessary steps, making interview preparation accessible, repeatable, and relevant. | | | | |
+| | | | |
 | Second idea | Description | | | | | | |
 | ... | Description | | | | | | |
 | Last idea | Description | | | | | | |
