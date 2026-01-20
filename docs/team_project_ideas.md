@@ -12,7 +12,7 @@ you like the best.
 
 | Project Idea | Description | Abdul Shah | Adewale Agboke | teammate name | teammate name | teammate name | teammate name |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Chat App |  A chat app that can handle thousands of requests asynchronously build up on Django/FastAPI as backend and ReactJs as frontend|X| | | | | |
+| AI Interview Question Generator (Web Application)|  A chat app that can handle thousands of requests asynchronously build up on Django/FastAPI as backend and ReactJs as frontend|X| | | | | |
 | Second idea | Description | | | | | | |
 | ... | Description | | | | | | |
 | Last idea | Description | | | | | | |
