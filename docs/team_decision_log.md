@@ -16,7 +16,7 @@ you like the best.
 |   |	- Working Session Thursday@4:00 p.m. CST | | | | | | |
 | 2	| Project Backlog Tool | | | | | | |
 |   |	- Notion | | | | | | |
-|   |	- Jira | | | | | | |
+|   |	- Jira |YES | YES | YES |YES | YES | YES |
 | 3	| Technical Stack (vote by adding your pref. in the cell under your name) | | | | | | |
 |   |	- BE Language | | | | | | |
 |   |	- FE Language | | | | | | |
@@ -35,7 +35,7 @@ you like the best.
 |   |	- Paper & pencil | | | | | | |
 |   |	- Adobe XD | | | | | | |
 |   |	- Balsamiq | | | | | | |
-|   |	- Figma | | | | | | |
+|   |	- Figma | YES | YES | YES | YES| YES | YES |
 | 7	| Who works in which part of the app? | | | | | | |
 |   | - BE (not applicable for Tier 1 teams) | | | | | | |
 |   |	- FE | | | | | | |
