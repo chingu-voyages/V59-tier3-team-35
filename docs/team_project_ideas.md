@@ -10,7 +10,7 @@ sentences.
 Each team member should Place an 'X' under their name to vote for the ideas 
 you like the best.
 
-| Project Idea | Description | Abdul Shah | teammate name | teammate name | teammate name | teammate name | teammate name |
+| Project Idea | Description | Abdul Shah | Adewale Agboke | teammate name | teammate name | teammate name | teammate name |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | Chat App |  A chat app that can handle thousands of requests asynchronously build up on Django/FastAPI as backend and ReactJs as frontend|X| | | | | |
 | Second idea | Description | | | | | | |
