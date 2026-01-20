@@ -12,9 +12,7 @@ you like the best.
 
 | Project Idea | Description | Abdul Shah | Adewale Agboke | teammate name | teammate name | teammate name | teammate name |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| AI Interview Question Generator (Web Application)|  The AI Interview Question Generator is a web application that helps people prepare for job interviews by generating role-specific interview questions using AI.
-
-| | | | |
+| AI Interview Question Generator (Web Application)|  The AI Interview Question Generator is a web application that helps people prepare for job interviews by generating role-specific interview questions using AI.| | | | |
 | Second idea | Description | | | | | | |
 | ... | Description | | | | | | |
 | Last idea | Description | | | | | | |
