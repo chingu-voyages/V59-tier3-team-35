@@ -39,5 +39,6 @@ coding!
 - Chinedu Olekah: [GitHub](https://github.com/kenako1) / [LinkedIn](https://www.linkedin.com/in/chinedu-olekah)
 - Adewale Agboke: [GitHub](https://github.com/adewale_agboke) / [LinkedIn](https://www.linkedin.com/in/adewaleagboke)
 - Vandna Kapoor:  [GitHub](https://github.com/vandnakapoor19) / [LinkedIn](https://www.linkedin.com/in/vandnakapoor/)
+- Renaud Noubieptie: [GitHub](https://github.com/Renaud2002) / [LinkedIn](https://www.linkedin.com/in/frednoubieptie/)
    ...
 - Teammate name #n: [GitHub](https://github.com/ghaccountname) / [LinkedIn](https://linkedin.com/in/liaccountname)
