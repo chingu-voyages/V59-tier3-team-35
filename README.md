@@ -41,3 +41,4 @@ coding!
 - Vandna Kapoor:  [GitHub](https://github.com/vandnakapoor19) / [LinkedIn](https://www.linkedin.com/in/vandnakapoor/)
 - Renaud Noubieptie: [GitHub](https://github.com/Renaud2002) / [LinkedIn](https://www.linkedin.com/in/frednoubieptie/)
 - Hyun Woo Kim: [GitHub](https://github.com/hynwkm) / [LinkedIn](https://www.linkedin.com/in/hyunwoo-kim/)
+- Jessica Hackett: [LinkedIn](https://www.linkedin.com/in/jessica-hackett/)
