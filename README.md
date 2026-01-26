@@ -42,3 +42,5 @@ coding!
 - Renaud Noubieptie: [GitHub](https://github.com/Renaud2002) / [LinkedIn](https://www.linkedin.com/in/frednoubieptie/)
 - Hyun Woo Kim: [GitHub](https://github.com/hynwkm) / [LinkedIn](https://www.linkedin.com/in/hyunwoo-kim/)
 - Jessica Hackett: [LinkedIn](https://www.linkedin.com/in/jessica-hackett/)
+- Semilore Omotade-Michaels: [GitHub](https://github.com/shemigam1) / [LinkedIn](https://www.linkedin.com/in/semiloreom/)
+
