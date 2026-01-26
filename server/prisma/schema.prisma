@@ -1,0 +1,120 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Account {
+  id               String            @id @default(cuid())
+  name             String
+  email            String            @unique
+  password         String?
+  avatar           File?             @relation(fields: [avatarId], references: [id], onDelete: Cascade)
+  avatarId         String?
+  appAccountToken  String            @default(uuid())
+  role             AccountRole       @default(user)
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+  lastLogin        DateTime?
+  deleted          Boolean           @default(false)
+  deletedAt        DateTime?
+  banned           Boolean           @default(false)
+  bannedAt         DateTime?
+  practiceSessions PracticeSession[]
+}
+
+model File {
+  id       String    @id @default(cuid())
+  url      String
+  accounts Account[]
+}
+
+model VerificationToken {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  code      String
+  createdAt DateTime @default(now())
+}
+
+enum AccountRole {
+  superadmin
+  admin
+  user
+}
+
+model Role {
+  id        String   @id @default(cuid())
+  key       String   @unique // e.g. "SCRUM_MASTER"
+  name      String // e.g. "Scrum Master"
+  focus     String? // Backlog management
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  questions Question[]
+  sessions  PracticeSession[]
+}
+
+model Question {
+  id          String   @id @default(cuid())
+  roleId      String
+  prompt      String
+  explanation String?
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  role     Role              @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  choices  Choice[]
+  attempts QuestionAttempt[]
+
+  @@index([roleId])
+}
+
+model Choice {
+  id         String   @id @default(cuid())
+  questionId String
+  label      String // "A", "B", "C", "D"
+  text       String
+  isCorrect  Boolean  @default(false)
+  createdAt  DateTime @default(now())
+
+  question         Question          @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  questionAttempts QuestionAttempt[]
+
+  @@unique([questionId, label])
+  @@index([questionId])
+}
+
+model PracticeSession {
+  id          String    @id @default(cuid())
+  roleId      String
+  accountId   String?
+  startedAt   DateTime  @default(now())
+  completedAt DateTime?
+
+  role     Role              @relation(fields: [roleId], references: [id], onDelete: Restrict)
+  account  Account?          @relation(fields: [accountId], references: [id], onDelete: SetNull)
+  attempts QuestionAttempt[]
+
+  @@index([roleId])
+  @@index([accountId])
+}
+
+model QuestionAttempt {
+  id               String   @id @default(cuid())
+  sessionId        String
+  questionId       String
+  selectedChoiceId String?
+  attemptNumber    Int
+  isCorrect        Boolean
+  createdAt        DateTime @default(now())
+
+  session        PracticeSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  question       Question        @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  selectedChoice Choice?         @relation(fields: [selectedChoiceId], references: [id], onDelete: SetNull)
+
+  @@index([sessionId, questionId])
+}

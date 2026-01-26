@@ -1,0 +1,1 @@
+npx tsc && rm -rf dist

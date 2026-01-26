@@ -1,0 +1,49 @@
+{
+  "dependencies": {
+    "@fastify/swagger": "^9.6.1",
+    "@fastify/swagger-ui": "^5.2.4",
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^7.3.0",
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.2.3",
+    "fastify": "^5.7.1",
+    "pg": "^8.17.2",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
+    "@types/node": "^25.0.10",
+    "@types/pg": "^8.16.0",
+    "husky": "^9.1.7",
+    "prisma": "^7.3.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "name": "fastify",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "tsx -r tsconfig-paths/register src/index.ts",
+    "dev": "nodemon --exec tsx -r tsconfig-paths/register src/index.ts",
+    "db:pull": "prisma db pull",
+    "db:push": "prisma db push",
+    "db:migrate": "prisma migrate dev && prisma generate",
+    "db:reset": "prisma migrate reset",
+    "db:generate": "prisma generate",
+    "postinstall": "prisma generate",
+    "db:studio": "prisma studio",
+    "db:seed": "npx tsx prisma/seed.ts",
+    "db:dev": "prisma dev",
+    "db:cloud": "npx create-db",
+    "scripts": "npx tsx prisma/scripts.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module"
+}
