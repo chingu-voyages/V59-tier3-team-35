@@ -36,7 +36,7 @@ coding!
 
 - Abdul Qadeer Shah: [GitHub](https://github.com/shahSpider) / [LinkedIn](https://linkedin.com/in/abdul-qadeer-shah)
 - Elijah Soladoye: [GitHub](https://github.com/shodown96) / [LinkedIn](https://linkedin.com/in/elijah-soladoye)
-- Chinedu Olekah: [GitHub](https://github.com/kenako1) / [LinkedIn](https://www.linkedin.com/in/chinedu-olekah)
+- Product Owner: [GitHub](https://github.com/) / [LinkedIn](https://www.linkedin.com/in/)
 - Adewale Agboke: [GitHub](https://github.com/adewale_agboke) / [LinkedIn](https://www.linkedin.com/in/adewaleagboke)
 - Vandna Kapoor:  [GitHub](https://github.com/vandnakapoor19) / [LinkedIn](https://www.linkedin.com/in/vandnakapoor/)
 - Renaud Noubieptie: [GitHub](https://github.com/Renaud2002) / [LinkedIn](https://www.linkedin.com/in/frednoubieptie/)
