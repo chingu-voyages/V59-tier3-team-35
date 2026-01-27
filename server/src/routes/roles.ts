@@ -1,18 +1,17 @@
-import { FastifyPluginAsync } from "fastify";
-import { RoleService } from "@/services/roles.service";
+import { API_OBJECTS } from "@/constants";
 import { getRoleSchema, getRolesSchema } from "@/schemas/roles";
-import { constructResponse } from "@/utilities/common";
-import { API_OBJECTS } from "@/constants/app";
+import { RoleService } from "@/services/roles.service";
+import { constructResponse } from "@/utilities";
+import { FastifyPluginAsync } from "fastify";
 
 
 export const rolesRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.get(
-    "/roles",
+    "/",
     { schema: getRolesSchema },
     async (request, reply) => {
       try {
-        const query = request.query as any;
-        const roles = await RoleService.getRoles(query);
+        const roles = await RoleService.getRoles( request.query as any);
 
         return constructResponse({
           reply,
@@ -35,7 +34,7 @@ export const rolesRoutes: FastifyPluginAsync = async (fastify) => {
   );
 
   fastify.get(
-    "/roles/:key",
+    "/:key",
     { schema: getRoleSchema },
     async (request, reply) => {
       try {

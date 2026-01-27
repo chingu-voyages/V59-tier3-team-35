@@ -14,6 +14,7 @@ export const API_OBJECTS = {
   OTP: 'OTP',
   Token: 'Token',
   Role: 'Role',
+  Question:'Question'
 };
 export const APP_NAME = "Start"
 export const DEFAULT_PAGE_SIZE = 25;

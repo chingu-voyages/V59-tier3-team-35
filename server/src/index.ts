@@ -5,6 +5,7 @@ import { API_OBJECTS, APP_NAME } from "./constants/app";
 import { rolesRoutes } from './routes/roles';
 import { baseResponseSchema } from "./schemas/builders";
 import { constructResponse } from "./utilities/common";
+import { questionsRoutes } from "./routes/questions";
 // import pkg from "../../package.json";
 
 const port = Number(process.env.PORT || 0) || 4000
@@ -29,9 +30,8 @@ const setup = async () => {
 
 
     // Router: register route modules (use a prefix if you want)
-    await server.register(rolesRoutes, { prefix: "/api" });
-    // Add a `schema` object to the route options.
-    // Fastify Swagger uses `schema.tags`, `schema.summary`, `schema.description`, and `schema.response`.
+    await server.register(rolesRoutes, { prefix: "/api/roles" });
+    await server.register(questionsRoutes, { prefix: "/api/questions" });
 
     server.get("/", {
         schema: {

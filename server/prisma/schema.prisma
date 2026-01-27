@@ -60,8 +60,8 @@ model Role {
 model Question {
   id          String   @id @default(cuid())
   roleId      String
-  prompt      String
-  explanation String?
+  prompt      String? // question text
+  explanation String? // rationale
   isActive    Boolean  @default(true)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt

@@ -1,4 +1,3 @@
-// src/schemas/questions.schemas.ts
 import {
   constructSuccessResponse,
   constructErrorResponse,
@@ -48,6 +47,10 @@ export const getQuestionsSchema = {
       roleId: {
         type: "string",
         description: "Filter by role ID"
+      },
+      roleKey: {
+        type: "string",
+        description: "Filter by role key"
       },
       isActive: {
         type: "boolean",
