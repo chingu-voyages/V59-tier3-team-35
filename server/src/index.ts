@@ -9,6 +9,7 @@ import { questionsRoutes } from "./routes/questions";
 // import pkg from "../../package.json";
 
 const port = Number(process.env.PORT || 0) || 4000
+const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 
 const setup = async () => {
     const server = fastify()
@@ -69,7 +70,7 @@ const setup = async () => {
     );
 
 
-    server.listen({ port }, (err, address) => {
+    server.listen({ host, port }, (err, address) => {
         if (err) {
             console.error(err)
             process.exit(1)
