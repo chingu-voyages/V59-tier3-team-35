@@ -63,6 +63,74 @@ export const questionsRoutes: FastifyPluginAsync = async (server) => {
         }
     );
 
+    server.get(
+        "/getNextQuestion",
+        { schema: getQuestionSchema },
+        async (request, reply) => {
+
+            // this currently only applies to one role, want to double check something first before i fully implement this
+            // i'm still getting familair with typscript will read the handbook and double back to fix any issue here
+            
+            try {
+                const currentIndex = request.session.get("currentQuestion") ?  request.session.get("currentQuestion") : 0;
+                const data = await QuestionService.getQuestion_v2(currentIndex);
+
+                // update current session index
+                request.session.set("currentIndex", currentIndex + 1 );
+
+                return constructResponse({
+                    reply,
+                    code: 200,
+                    apiObject: API_OBJECTS.Question,
+                    message: STRINGS.Success,
+                    data,
+                });
+            } catch (error) {
+                return constructResponse({
+                    reply,
+                    code: 500,
+                    apiObject: API_OBJECTS.Question,
+                    message: ERROR_MESSAGES.InternalServerError,
+                    data: error,
+                });
+            }
+
+
+        }
+    );
+
+    server.get(
+        "/getNextQuestionAnswer",
+        { schema: getQuestionSchema },
+        async (request, reply) => {
+            try {
+                const currentIndex = request.session.get("currentQuestion") ?  request.session.get("currentQuestion") : 0; 
+                // todo: this should throw an error if currentIndex is undefined (above)
+
+                const data = await QuestionService.getQuestion_v2(currentIndex);
+                const answer = data.answer;
+
+                return constructResponse({
+                    reply,
+                    code: 200,
+                    apiObject: API_OBJECTS.Question,
+                    message: STRINGS.Success,
+                    answer,
+                });
+
+
+            } catch (error) {
+                return constructResponse({
+                    reply,
+                    code: 500,
+                    apiObject: API_OBJECTS.Question,
+                    message: ERROR_MESSAGES.InternalServerError,
+                    data: error,
+                });
+            }
+        }
+    );
+
     // server.post(
     //     "/",
     //     { schema: createQuestionSchema },

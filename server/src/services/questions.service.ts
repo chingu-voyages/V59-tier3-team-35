@@ -66,6 +66,14 @@ export class QuestionService {
         return question;
     };
 
+    static getQuestion_v2 = async (currentIndex: number) => {
+        
+        // to do update this to add account for different user roles 
+        const question = await prisma.crummasterquestion.findUnique({
+            where: {id: currentIndex}
+        })
+    }
+
     static getQuestionsByRole = async (
         roleKey: string,
         params: PaginationParams
