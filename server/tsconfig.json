@@ -9,6 +9,7 @@
     "module": "esnext",
     "target": "es2023",
     "moduleResolution": "bundler",
+    "esModuleInterop": true,
     "types": [],
     // For nodejs:
     // "lib": ["esnext"],

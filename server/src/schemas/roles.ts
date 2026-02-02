@@ -57,6 +57,15 @@ export const getRoleSchema = {
   }
 } as const;
 
+export const setRoleSchema = {
+  tags: [ "Roles"],
+  description: "Role has been set",
+  body: {},
+  response: {
+    200: constructSuccessResponse(roleSchema)
+  }
+}
+
 // POST /roles - Create role
 export const createRoleSchema = {
   tags: ["Roles"],

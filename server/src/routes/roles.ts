@@ -1,5 +1,5 @@
 import { API_OBJECTS } from "@/constants";
-import { getRoleSchema, getRolesSchema } from "@/schemas/roles";
+import { getRoleSchema, getRolesSchema, setRoleSchema } from "@/schemas/roles";
 import { RoleService } from "@/services/roles.service";
 import { constructResponse } from "@/utilities";
 import { FastifyPluginAsync } from "fastify";
@@ -69,4 +69,15 @@ export const rolesRoutes: FastifyPluginAsync = async (fastify) => {
       }
     }
   );
+
+  fastify.post("/setRole", {schema: setRoleSchema}, (request, reply) => {
+    request.session.set("role", request.body);
+    return constructResponse({
+      reply,
+      message: "Role Set successfully",
+      data: "",
+      code: 200,
+      apiObject: API_OBJECTS.Role
+    });
+  });
 }

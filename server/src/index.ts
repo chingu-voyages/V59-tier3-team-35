@@ -6,9 +6,13 @@ import { rolesRoutes } from './routes/roles';
 import { baseResponseSchema } from "./schemas/builders";
 import { constructResponse } from "./utilities/common";
 import { questionsRoutes } from "./routes/questions";
+import { fastifyCookie } from "@fastify/cookie";
+import { fastifySession } from "@fastify/session";
+
+
 // import pkg from "../../package.json";
 
-const port = Number(process.env.PORT || 0) || 4000
+const port = Number(process.env.PORT || 0) || 4000;
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 
 const setup = async () => {
@@ -33,6 +37,11 @@ const setup = async () => {
     // Router: register route modules (use a prefix if you want)
     await server.register(rolesRoutes, { prefix: "/api/roles" });
     await server.register(questionsRoutes, { prefix: "/api/questions" });
+
+    // user sesion
+    await server.register(fastifyCookie);
+    await server.register(fastifySession, {secret: 'a secret with minimum length of 32 characters'});
+
 
     server.get("/", {
         schema: {
