@@ -6,7 +6,7 @@ const seedDB = async () => {
     await SeedService.seedRolesAndQuestions(data);
 
     // Seed just one role
-    await SeedService.seedRole("Scrum Master", "Servant leadership");
+    // await SeedService.seedRole("Scrum Master", "Servant leadership");
 
     // Seed one role with all its questions
     // await SeedService.seedRoleWithQuestions({

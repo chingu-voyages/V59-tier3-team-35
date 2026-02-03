@@ -33,7 +33,7 @@ export const constructErrorResponse = () => ({
 export const paginationMetaSchema = {
     type: "object",
     properties: {
-        page: { type: "number" },
+        currentPage: { type: "number" },
         pageSize: { type: "number" },
         total: { type: "number" },
         totalPages: { type: "number" }
@@ -48,9 +48,9 @@ export const constructPaginatedData = (itemSchema: any) => ({
     properties: {
         items: {
             type: "array",
-            items: itemSchema
+            items: itemSchema,
         },
-        meta: paginationMetaSchema
+        ...paginationMetaSchema.properties
     }
 } as const);
 
