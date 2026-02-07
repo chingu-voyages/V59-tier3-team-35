@@ -1,10 +1,15 @@
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Flashcard from "./components/Flashcard";
+import LandingPage from "./pages/LandingPage";
+import SummaryPage from "./pages/SummaryPage";
 
 function App() {
   return (
     <>
-      <Flashcard />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/summary" element={<SummaryPage />} />
+      </Routes>
     </>
   );
 }

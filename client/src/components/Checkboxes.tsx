@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   useCurrentQuestionIndex,
   useFlashCardActions,
@@ -9,6 +10,8 @@ import { cn } from "../utils/cn";
 
 export default function Checkboxes() {
   const [selected, setSelected] = useState<number | null>(null);
+
+  const navigate = useNavigate();
 
   const questions = useQuestions();
   const currentQuestionIndex = useCurrentQuestionIndex();
@@ -23,7 +26,7 @@ export default function Checkboxes() {
 
   const flipped = useFlipped();
 
-  const { flip } = useFlashCardActions();
+  const { flip, incrementScore } = useFlashCardActions();
 
   const handleCheckboxChange = (index: number) => {
     if (selected == index) {
@@ -38,11 +41,19 @@ export default function Checkboxes() {
   const handleCheckAnswer = () => {
     if (selected !== correctAnswerId) {
       decrementLives();
+    } else {
+      incrementScore();
     }
     flip();
   };
 
   const handleNext = () => {
+    const isLastQuestion = currentQuestionIndex >= questions.length - 1;
+    if (isLastQuestion) {
+      setCurrentQuestionIndex(0);
+      navigate("/summary");
+      return;
+    }
     setCurrentQuestionIndex(currentQuestionIndex + 1);
     setSelected(null);
     flip();
