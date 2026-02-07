@@ -51,6 +51,7 @@ export default function Checkboxes() {
     const isLastQuestion = currentQuestionIndex >= questions.length - 1;
     if (isLastQuestion) {
       setCurrentQuestionIndex(0);
+      flip();
       navigate("/summary");
       return;
     }

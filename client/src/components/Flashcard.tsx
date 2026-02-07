@@ -25,7 +25,7 @@ export default function Flashcard() {
   const flipped = useFlipped();
 
   return (
-    <div className="flex w-2xl flex-col gap-4 border border-[#a7d7fe] text-[#2699fb]">
+    <div className="bg-primary flex w-2xl flex-col gap-4 border border-[#a7d7fe] text-[#2699fb]">
       <div className="flex flex-col gap-8 bg-[#a7d7fe] p-8 px-12">
         <h2 className="text-center text-2xl font-bold text-[#2699fb]">
           {roleTitle}

@@ -12,10 +12,9 @@ export default function Summary() {
   );
 
   return (
-    <div className="flex w-2xl flex-col gap-12 border border-[#a7d7fe] p-8 text-[#2699fb]">
+    <div className="bg-primary flex w-2xl flex-col gap-12 border border-[#a7d7fe] p-8 text-[#2699fb]">
       <div className="m-auto flex flex-col justify-center gap-4">
         <h2 className="m-auto text-2xl">RESULTS</h2>
-
         <ProgressCircle percentage={percentage} colour="#2699fb" />
         <div className="flex w-full flex-col gap-4">
           <div className="flex justify-between">
