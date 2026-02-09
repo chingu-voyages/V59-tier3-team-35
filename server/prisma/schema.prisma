@@ -73,6 +73,12 @@ model Question {
   @@index([roleId])
 }
 
+mode ScrumMasterQuestion {
+  id        Int      @id @default(autoincrement())
+  prompt    String 
+  answer    String 
+}
+
 model Choice {
   id         String   @id @default(cuid())
   questionId String
