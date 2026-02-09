@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import FavoriteIcon from "../icons/FavoriteIcon";
 import {
   MAX_LIVES,
   useCurrentQuestionIndex,
+  useFlashCardActions,
   useFlipped,
   useLives,
   useQuestions,
@@ -10,25 +12,31 @@ import { cn } from "../utils/cn";
 import Checkboxes from "./Checkboxes";
 
 export default function Flashcard() {
-  const roleTitle = "ROLE TITLE";
+  const roleTitle = "WEB_DEVELOPER";
 
   const currentLives = useLives();
+
+  const { fetchQuestions } = useFlashCardActions();
+
+  useEffect(() => {
+    console.log("Fetching questions...");
+    fetchQuestions(roleTitle);
+  }, []);
 
   const questions = useQuestions();
   const currentQuestionIndex = useCurrentQuestionIndex();
   const questionTitle =
-    questions[currentQuestionIndex]?.questionTitle || "Question Title";
+    questions[currentQuestionIndex]?.prompt || "Question Title";
   const questionDescription =
-    questions[currentQuestionIndex]?.questionDescription ||
-    "Question Description";
+    questions[currentQuestionIndex]?.explanation || "Question Description";
 
   const flipped = useFlipped();
 
   return (
     <div className="bg-primary flex w-2xl flex-col gap-4 border border-[#a7d7fe] text-[#2699fb]">
       <div className="flex flex-col gap-8 bg-[#a7d7fe] p-8 px-12">
-        <h2 className="text-center text-2xl font-bold text-[#2699fb]">
-          {roleTitle}
+        <h2 className="text-center text-2xl font-bold text-[#2699fb] capitalize">
+          {roleTitle.replace(/_/g, " ")}
         </h2>
         <div className="flex items-center gap-2">
           <progress

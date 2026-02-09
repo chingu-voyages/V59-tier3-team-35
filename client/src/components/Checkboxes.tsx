@@ -15,14 +15,15 @@ export default function Checkboxes() {
 
   const questions = useQuestions();
   const currentQuestionIndex = useCurrentQuestionIndex();
-  const answers = questions[currentQuestionIndex]?.answers || [
-    { id: 1, text: "Answer 1" },
-    { id: 2, text: "Answer 2" },
-    { id: 3, text: "Answer 3" },
-    { id: 4, text: "Answer 4" },
+  const answers = questions[currentQuestionIndex]?.choices || [
+    { id: 1, text: "Answer 1", isCorrect: false },
+    { id: 2, text: "Answer 2", isCorrect: false },
+    { id: 3, text: "Answer 3", isCorrect: false },
+    { id: 4, text: "Answer 4", isCorrect: false },
   ];
 
-  const correctAnswerId = questions[currentQuestionIndex]?.correctAnswerId;
+  const correctAnswerId =
+    answers.find((answer) => answer.isCorrect)?.id || null;
 
   const flipped = useFlipped();
 
@@ -68,6 +69,7 @@ export default function Checkboxes() {
             key={answer.id}
             className={cn(
               "flex items-center gap-2 transition-opacity",
+              flipped ? "pointer-events-none" : "",
               flipped && selected !== answer.id && answer.id !== correctAnswerId
                 ? "pointer-events-none opacity-0"
                 : "",
@@ -93,7 +95,6 @@ export default function Checkboxes() {
           </li>
         ))}
       </ul>
-
       <button
         className={cn(
           "m-auto w-fit cursor-pointer rounded-md border-2 border-[#2699fb] px-16 py-2 text-center transition-opacity",

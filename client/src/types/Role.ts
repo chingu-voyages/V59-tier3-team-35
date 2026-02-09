@@ -1,0 +1,6 @@
+export type Role =
+  | "SCRUM_PRODUCT_OWNER"
+  | "SCRUM_MASTER"
+  | "UIUX_DESIGNER"
+  | "WEB_DEVELOPER"
+  | "PYTHON_DEVELOPER";
