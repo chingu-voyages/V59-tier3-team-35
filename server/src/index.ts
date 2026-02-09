@@ -10,9 +10,14 @@ import { questionsRoutes } from "./routes/questions";
 
 const port = Number(process.env.PORT || 0) || 4000
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
-
+// const allowedOrigins = ['localhost']
 const setup = async () => {
     const server = fastify()
+    server.register(import("@fastify/cors"), {
+        origin: ['*'],
+        methods: ['*'],
+        credentials: true // Allow cookies to be sent
+    });
 
     // Swagger (OpenAPI)
     await server.register(swagger, {
