@@ -1,5 +1,4 @@
 import { create } from "zustand";
-import { defaultQuestions } from "../data/questions";
 import { fetchQuestions } from "../services/questionsService";
 import type { Question } from "../types/Question";
 import type { Role } from "../types/Role";
@@ -26,7 +25,7 @@ type FlashCardState = {
 };
 
 const useFlashCardStore = create<FlashCardState>((set) => ({
-  questions: defaultQuestions,
+  questions: [],
   status: "ready",
   currentQuestionIndex: 0,
   lives: 3,
