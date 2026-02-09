@@ -14,7 +14,7 @@ const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
 const setup = async () => {
     const server = fastify()
     server.register(import("@fastify/cors"), {
-        origin: ['*'],
+        origin: ['http://localhost:5173', 'http://localhost:3000'],
         methods: ['*'],
         credentials: true // Allow cookies to be sent
     });
