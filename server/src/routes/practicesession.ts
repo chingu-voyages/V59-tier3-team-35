@@ -8,6 +8,7 @@ import {
 } from "@/schemas/questions";
 
 import {
+    retriveSessionDataSchema,
     startPracticeSessionSchema 
 } from "@/schemas/practicesession"
 import { PracticeSessionService } from "@/services/practicesession.service";
@@ -62,6 +63,34 @@ export const practiceSessionRoutes: FastifyPluginAsync =  async (server) => {
                     data: {}
                 })
 
+            } catch (error) {
+                return constructResponse({
+                    reply,
+                    code: 500,
+                    apiObject: API_OBJECTS.Question,
+                    message: ERROR_MESSAGES.InternalServerError,
+                    data: error,
+                });
+            }
+        }
+    );
+
+    server.get(
+        "/retriveSessionData",
+        { schema: retriveSessionDataSchema},
+        async (request, reply) => {
+
+            try {
+                // const {sessionId} = request.params as {sessionId: string}
+                const sessionData = await PracticeSessionService.retriveSessionData(request.params as any);
+                
+                return constructResponse({
+                    reply,
+                    code: 201,
+                    apiObject: API_OBJECTS.Session,
+                    message: STRINGS.SessionSuccess,
+                    data: sessionData
+                })
             } catch (error) {
                 return constructResponse({
                     reply,

@@ -46,4 +46,10 @@ export class PracticeSessionService {
         });
 
     }
+
+    static retriveSessionData = async (params: { sessionId: string }) => {
+        
+        const sessionData = await prisma.practiceSession.findUnique({where: { id: params.sessionId }});
+        return sessionData;
+    }
 }
