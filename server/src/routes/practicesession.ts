@@ -2,6 +2,7 @@ import { API_OBJECTS, ERROR_MESSAGES, STRINGS } from "@/constants";
 import {
     getQuestionSchema,
     getQuestionsSchema,
+    recordQuestionAttemptSchema,
     // createQuestionSchema,
     // updateQuestionSchema,
 } from "@/schemas/questions";
@@ -31,6 +32,34 @@ export const practiceSessionRoutes: FastifyPluginAsync =  async (server) => {
                     apiObject: API_OBJECTS.Session,
                     message: STRINGS.SessionSuccess,
                     data: sessionId
+                })
+
+            } catch (error) {
+                return constructResponse({
+                    reply,
+                    code: 500,
+                    apiObject: API_OBJECTS.Question,
+                    message: ERROR_MESSAGES.InternalServerError,
+                    data: error,
+                });
+            }
+        }
+    );
+
+    server.post(
+        "/recordQuestionAttempt",
+        { schema: recordQuestionAttemptSchema},
+        async (request, reply) => {
+
+            try {
+                const record = await PracticeSessionService.recordQuestionAttempt(request.body as any);
+
+                 return constructResponse({
+                    reply,
+                    code: 201,
+                    apiObject: API_OBJECTS.Session,
+                    message: STRINGS.SessionSuccess,
+                    data: {}
                 })
 
             } catch (error) {

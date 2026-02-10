@@ -16,4 +16,34 @@ export class PracticeSessionService {
             }
         });
     }
+
+    static recordQuestionAttempt = async (params: {
+        sessionId: string,
+        questionId: string,
+        selectedChoidId?: string,
+        attemptNumber: number,
+        isCorrect: boolean
+    }) => {
+        const previosAttempt = await prisma.questionAttempt.findUnique({ where: { id: params.sessionId }});
+        
+        if (!previosAttempt) {
+            return prisma.questionAttempt.create({
+                data: {
+                    sessionId: params.sessionId,
+                    questionId: params.questionId,
+                    // selectedChoiceId: params.selectedChoidId,
+                    attemptNumber: params.attemptNumber,
+                    isCorrect: params.isCorrect
+                }
+            });
+        }
+
+        return prisma.questionAttempt.update({
+            where: { id: params.sessionId },
+            data: {
+                attemptNumber: params.attemptNumber
+            }
+        });
+
+    }
 }

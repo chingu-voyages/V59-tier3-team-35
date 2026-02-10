@@ -158,3 +158,28 @@ export const updateQuestionSchema = {
     500: constructErrorResponse()
   }
 } as const;
+
+export const questionAttemptRecordResponse = {
+    type: "object",
+    properties: {
+      msg: { type: "string" }
+    }
+}
+
+
+export const recordQuestionAttemptSchema = {
+  tags: ["Questions"],
+  description: "Record question attempt",
+  params: {
+    type: "object",
+    required: ["sessionid"],
+    properties: {
+      ...questionAttemptSchema.properties
+    }
+  },
+  response: {
+    201: constructSuccessResponse(questionAttemptRecordResponse),
+    404: constructErrorResponse(),
+    500: constructErrorResponse()
+  }
+}
