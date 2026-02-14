@@ -61,6 +61,9 @@ export default function Checkboxes() {
     flip();
   };
 
+  const answerDescription =
+    questions[currentQuestionIndex]?.explanation || "Answer Description";
+
   return (
     <>
       <ul className="flex flex-col gap-4">
@@ -81,23 +84,31 @@ export default function Checkboxes() {
               checked={selected === answer.id}
               onChange={() => handleCheckboxChange(answer.id)}
               className={cn(
-                "h-8 w-8 shrink-0 cursor-pointer appearance-none rounded-sm border-2 border-[#2699fb] transition-all checked:bg-[#2699fb]",
+                "checked:bg-error checked:border-error h-8 w-8 shrink-0 cursor-pointer appearance-none rounded-full border-2 transition-all",
                 flipped
                   ? answer.id === correctAnswerId
-                    ? "border-green-500 checked:bg-green-500"
-                    : "border-red-500 checked:bg-red-500"
+                    ? "border-success checked:bg-success checked:border-success"
+                    : "border-error checked:bg-error"
                   : "",
               )}
             />
-            <label htmlFor={`answer-${answer.id}`} className="cursor-pointer">
+            <label
+              htmlFor={`answer-${answer.id}`}
+              className={cn(
+                "cursor-pointer",
+                selected === answer.id ? "text-error" : "",
+                flipped && answer.id === correctAnswerId ? "text-success" : "",
+              )}
+            >
               {answer.text}
             </label>
           </li>
         ))}
       </ul>
+      {flipped && <p>{answerDescription}</p>}
       <button
         className={cn(
-          "m-auto w-fit cursor-pointer rounded-md border-2 border-[#2699fb] px-16 py-2 text-center transition-opacity",
+          "border-accent-secondary hover:bg-accent-secondary hover:text-primary ml-auto w-fit cursor-pointer rounded-2xl border-2 px-16 py-2 text-center transition-opacity",
           selected === null ? "pointer-events-none opacity-0" : "",
         )}
         onClick={flipped ? handleNext : handleCheckAnswer}

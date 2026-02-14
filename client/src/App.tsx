@@ -3,6 +3,7 @@ import "./App.css";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import LandingPage from "./pages/LandingPage";
+import QuizPage from "./pages/QuizPage";
 import SummaryPage from "./pages/SummaryPage";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/summary" element={<SummaryPage />} />
+          <Route path="/quiz" element={<QuizPage />} />
         </Routes>
       </main>
       <Footer />

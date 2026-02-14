@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import FavoriteIcon from "../icons/FavoriteIcon";
+import LeafIcon from "../icons/LeafIcon";
 import {
   MAX_LIVES,
   useCurrentQuestionIndex,
   useFlashCardActions,
-  useFlipped,
   useLives,
   useQuestions,
 } from "../stores/flashcardStore";
@@ -27,53 +26,52 @@ export default function Flashcard() {
   const currentQuestionIndex = useCurrentQuestionIndex();
   const questionTitle =
     questions[currentQuestionIndex]?.prompt || "Question Title";
-  const questionDescription =
-    questions[currentQuestionIndex]?.explanation || "Question Description";
-
-  const flipped = useFlipped();
 
   return (
-    <div className="bg-primary flex w-2xl flex-col gap-4 border border-[#a7d7fe] text-[#2699fb]">
-      <div className="flex flex-col gap-8 bg-[#a7d7fe] p-8 px-12">
-        <h2 className="text-center text-2xl font-bold text-[#2699fb] capitalize">
-          {roleTitle.replace(/_/g, " ")}
-        </h2>
-        <div className="flex items-center gap-2">
-          <progress
-            value={currentQuestionIndex}
-            max={questions.length}
-            className="h-4 flex-1 rounded-lg bg-white text-[#2699fb]"
-          />
-          <span>
-            {Math.floor((currentQuestionIndex / questions.length) * 100)}%
-          </span>
-        </div>
+    <div className="bg-primary mx-auto flex w-full max-w-3xl flex-col gap-4 overflow-hidden rounded-t-2xl">
+      <div className="relative w-full">
+        <img
+          src="/flashcard-bg-image.jpg"
+          alt="Flashcard Background Image"
+          className="absolute inset-0 h-full w-full object-cover opacity-25"
+        />
+        <div className="relative z-10 flex flex-col gap-8 p-4 px-6 md:p-8 md:px-12">
+          <h2 className="text-center text-3xl font-semibold capitalize lg:text-4xl">
+            {roleTitle.replace(/_/g, " ")}
+          </h2>
+          <div className="flex items-center gap-2">
+            <progress
+              value={currentQuestionIndex}
+              max={questions.length}
+              className="progress-bar h-4 flex-1 rounded-lg bg-white"
+            />
+            <span className="font-[Quicksand] font-semibold">
+              {Math.floor((currentQuestionIndex / questions.length) * 100)}%
+            </span>
+          </div>
 
-        <div className="flex w-full justify-end gap-1">
-          {Array.from({ length: currentLives }).map((_, index) => (
-            <FavoriteIcon key={index} />
-          ))}
-          {Array.from({ length: MAX_LIVES - currentLives }).map((_, index) => (
-            <FavoriteIcon key={index} filled={false} />
-          ))}
+          <div className="text-accent flex w-full justify-end gap-1">
+            {Array.from({ length: currentLives }).map((_, index) => (
+              <LeafIcon key={index} />
+            ))}
+            {Array.from({ length: MAX_LIVES - currentLives }).map(
+              (_, index) => (
+                <LeafIcon key={index} filled={false} />
+              ),
+            )}
+          </div>
         </div>
       </div>
       <div className="flex flex-col gap-4 p-8">
-        <h3
-          className={cn(
-            "py-2 text-2xl font-semibold transition-opacity",
-            flipped ? "pointer-events-none opacity-0" : "",
-          )}
-        >
-          {questionTitle}
+        <h3 className={cn("py-2 text-2xl font-semibold transition-opacity")}>
+          Question {currentQuestionIndex + 1}
         </h3>
         <p
           className={cn(
-            "border-b border-b-2 border-[#a7d7fe] py-2 transition-opacity",
-            flipped ? "pointer-events-none opacity-0" : "",
+            "border-b border-b-2 border-[#C5C0B0] py-2 text-base/7 transition-opacity",
           )}
         >
-          {questionDescription}
+          {questionTitle}
         </p>
         <Checkboxes />
       </div>
