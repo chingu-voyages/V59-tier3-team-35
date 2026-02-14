@@ -6,4 +6,19 @@
     --color-accent: #6B705C;
     --color-accent-secondary: #3F3732;
     --color-error: #B5838D;
+    --color-footer: #8DA399;
+}
+
+@font-face {
+    font-family: Outfit;
+    font-style: normal;
+    src: url("./assets/fonts/OutfitVariable.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: Quicksand;
+    font-style: normal;
+    src: url("./assets/fonts/QuicksandVariable.ttf") format("truetype");
+    font-display: swap;
 }

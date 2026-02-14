@@ -7,12 +7,14 @@ import SummaryPage from "./pages/SummaryPage";
 
 function App() {
   return (
-    <div className="bg-background flex min-h-screen flex-col justify-between">
+    <div className="bg-background text-accent-secondary flex min-h-screen flex-col justify-between font-[Outfit]">
       <Header />
-      <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/summary" element={<SummaryPage />} />
-      </Routes>
+      <main className="flex flex-auto flex-col">
+        <Routes>
+          <Route path="/" element={<LandingPage />} />
+          <Route path="/summary" element={<SummaryPage />} />
+        </Routes>
+      </main>
       <Footer />
     </div>
   );
