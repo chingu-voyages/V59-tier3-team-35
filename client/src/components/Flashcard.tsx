@@ -33,8 +33,9 @@ export default function Flashcard() {
         <img
           src="/flashcard-bg-image.jpg"
           alt="Flashcard Background Image"
-          className="absolute inset-0 h-full w-full object-cover opacity-25"
+          className="absolute inset-0 z-10 h-full w-full object-cover"
         />
+        <div className="bg-background absolute inset-0 z-10 opacity-75" />
         <div className="relative z-10 flex flex-col gap-8 p-4 px-6 md:p-8 md:px-12">
           <h2 className="text-center text-3xl font-semibold capitalize lg:text-4xl">
             {roleTitle.replace(/_/g, " ")}
