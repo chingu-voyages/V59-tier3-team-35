@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import RightArrow from "../icons/RightArrow";
 import { useQuestions, useScore } from "../stores/flashcardStore";
 import ProgressCircle from "./ProgressCircle";
@@ -44,9 +45,11 @@ export default function Summary() {
         </div>
       </div>
       <div className="px-8">
-        <div className="border-accent-secondary flex items-center gap-2 border-t py-16 font-bold">
-          Review Missed Questions
-          <RightArrow />
+        <div className="border-accent-secondary gap-2 border-t py-16 font-bold">
+          <Link to="/review" className="flex items-center gap-2 align-middle">
+            Review Missed Questions
+            <RightArrow />
+          </Link>
         </div>
       </div>
     </div>

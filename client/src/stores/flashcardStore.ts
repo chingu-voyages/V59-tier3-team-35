@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { fetchQuestions } from "../services/questionsService";
-import type { Question } from "../types/Question";
+import type { MissedQuestion, Question } from "../types/Question";
 import type { Role } from "../types/Role";
 
 export const MAX_LIVES = 3;
@@ -12,11 +12,14 @@ interface FlashCardActions {
   setCurrentQuestionIndex: (index: number) => void;
   decrementLives: () => void;
   incrementScore: () => void;
+  endQuiz: () => void;
+  reset: () => void;
 }
 
 type FlashCardState = {
   questions: Question[];
-  status: "loading" | "error" | "ready" | "success";
+  missedQuestions: MissedQuestion[];
+  status: "loading" | "error" | "ready" | "success" | "gameover";
   currentQuestionIndex: number;
   lives: number;
   score: number;
@@ -26,6 +29,7 @@ type FlashCardState = {
 
 const useFlashCardStore = create<FlashCardState>((set) => ({
   questions: [],
+  missedQuestions: [],
   status: "ready",
   currentQuestionIndex: 0,
   lives: 3,
@@ -50,12 +54,45 @@ const useFlashCardStore = create<FlashCardState>((set) => ({
     setCurrentQuestionIndex: (index: number) =>
       set({ currentQuestionIndex: index }),
     decrementLives: () =>
-      set((state) => ({ lives: Math.max(0, state.lives - 1) })),
+      set((state) => {
+        const newLives = Math.max(0, state.lives - 1);
+        const isGameover = newLives === 0;
+
+        const currentIndex = state.currentQuestionIndex;
+        const currentQuestion = state.questions[currentIndex];
+
+        return {
+          lives: newLives,
+          status: isGameover ? "gameover" : state.status,
+          missedQuestions: [
+            ...state.missedQuestions,
+            {
+              question: currentQuestion,
+              index: currentIndex,
+            },
+          ],
+        };
+      }),
     incrementScore: () => set((state) => ({ score: state.score + 1 })),
+    endQuiz: () => set({ status: "gameover" }),
+    reset: () =>
+      set({
+        lives: 3,
+        score: 0,
+        currentQuestionIndex: 0,
+        missedQuestions: [],
+        status: "ready",
+        flipped: false,
+      }),
   },
 }));
 
 export const useQuestions = () => useFlashCardStore((state) => state.questions);
+
+export const useMissedQuestions = () =>
+  useFlashCardStore((state) => state.missedQuestions);
+
+export const useStatus = () => useFlashCardStore((state) => state.status);
 
 export const useFlipped = () => useFlashCardStore((state) => state.flipped);
 

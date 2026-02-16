@@ -6,3 +6,8 @@ export type Question = {
   explanation: string;
   choices: Answer[];
 };
+
+export type MissedQuestion = {
+  question: Question;
+  index: number;
+};

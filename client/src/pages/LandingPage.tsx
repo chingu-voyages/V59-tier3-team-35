@@ -5,9 +5,9 @@ export default function LandingPage() {
         <img
           src="/background-image.jpg"
           alt="Background Image"
-          className="absolute inset-0 h-full w-full object-cover opacity-25"
+          className="absolute inset-0 h-full w-full object-cover"
         />
-
+        <div className="bg-background absolute inset-0 z-10 opacity-75" />
         <div className="absolute inset-0 z-10 flex items-center justify-center">
           <div className="mx-auto flex w-3/4 flex-col items-center gap-8">
             <h3 className="text-center text-3xl font-semibold md:text-4xl lg:text-5xl">

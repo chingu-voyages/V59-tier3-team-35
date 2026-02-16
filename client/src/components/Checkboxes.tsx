@@ -5,6 +5,7 @@ import {
   useFlashCardActions,
   useFlipped,
   useQuestions,
+  useStatus,
 } from "../stores/flashcardStore";
 import { cn } from "../utils/cn";
 
@@ -37,7 +38,8 @@ export default function Checkboxes() {
     }
   };
 
-  const { setCurrentQuestionIndex, decrementLives } = useFlashCardActions();
+  const { setCurrentQuestionIndex, decrementLives, endQuiz } =
+    useFlashCardActions();
 
   const handleCheckAnswer = () => {
     if (selected !== correctAnswerId) {
@@ -48,11 +50,15 @@ export default function Checkboxes() {
     flip();
   };
 
+  const status = useStatus();
+
   const handleNext = () => {
     const isLastQuestion = currentQuestionIndex >= questions.length - 1;
-    if (isLastQuestion) {
-      setCurrentQuestionIndex(0);
-      flip();
+
+    const isGameover = status === "gameover";
+
+    if (isLastQuestion || isGameover) {
+      endQuiz();
       navigate("/summary");
       return;
     }

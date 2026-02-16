@@ -43,7 +43,7 @@ const ProgressCircle = ({ percentage = 0, colour = "#3F3732" }) => {
   return (
     <svg width={200} height={200} className="mx-auto">
       <g transform={`rotate(-90 ${"100 100"}) scale(1 -1) translate(0 -200)`}>
-        <Circle colour="#B5838D" />
+        <Circle colour="#B5838D" pct={100} />
         <Circle colour={colour} pct={pct} />
       </g>
       <Text percentage={pct} />
