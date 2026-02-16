@@ -10,11 +10,11 @@ import { questionsRoutes } from "./routes/questions";
 
 const port = Number(process.env.PORT || 0) || 4000
 const host = ("RENDER" in process.env) ? `0.0.0.0` : `localhost`;
-// const allowedOrigins = ['localhost']
+const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(",") || [];
 const setup = async () => {
     const server = fastify()
     server.register(import("@fastify/cors"), {
-        origin: ['http://localhost:5173', 'http://localhost:3000'],
+        origin: allowedOrigins,
         methods: ['*'],
         credentials: true // Allow cookies to be sent
     });
