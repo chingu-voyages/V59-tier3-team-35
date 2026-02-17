@@ -29,7 +29,7 @@ export const practiceSessionSchema = {
 } as const;
 
 export const startPracticeSessionSchema = {
-    tags: ["Questions"],
+    tags: ["Practice Session"],
     description: "Start a practice session",
     querystring: {
     type: "object",
@@ -41,7 +41,7 @@ export const startPracticeSessionSchema = {
     }
     },
     response: {
-    201: constructSuccessResponse(constructPaginatedData(practiceSessionId)),
+    201: constructSuccessResponse(practiceSessionId),
     500: constructErrorResponse()
     }
 }
@@ -58,7 +58,7 @@ export const retriveSessionDataSchema = {
     }
     },
     response: {
-    200: constructSuccessResponse(constructPaginatedData(practiceSessionSchema)),
+    200: constructSuccessResponse(practiceSessionSchema),
     500: constructErrorResponse()
     }
 }

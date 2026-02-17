@@ -34,7 +34,7 @@ const setup = async () => {
     // Router: register route modules (use a prefix if you want)
     await server.register(rolesRoutes, { prefix: "/api/roles" });
     await server.register(questionsRoutes, { prefix: "/api/questions" });
-    await server.register(practiceSessionRoutes, { prefix: "/api/practicesession" });
+    await server.register(practiceSessionRoutes, { prefix: "/api/practice-session" });
 
     server.get("/", {
         schema: {

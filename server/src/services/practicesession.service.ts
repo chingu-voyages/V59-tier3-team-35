@@ -24,27 +24,22 @@ export class PracticeSessionService {
         attemptNumber: number,
         isCorrect: boolean
     }) => {
-        const previosAttempt = await prisma.questionAttempt.findUnique({ where: { id: params.sessionId }});
-        
-        if (!previosAttempt) {
-            return prisma.questionAttempt.create({
-                data: {
-                    sessionId: params.sessionId,
-                    questionId: params.questionId,
-                    // selectedChoiceId: params.selectedChoidId,
-                    attemptNumber: params.attemptNumber,
-                    isCorrect: params.isCorrect
-                }
-            });
-        }
 
-        return prisma.questionAttempt.update({
-            where: { id: params.sessionId },
-            data: {
+        return prisma.questionAttempt.upsert({
+            where: {
+                id: params.sessionId
+            },
+            update: {
                 attemptNumber: params.attemptNumber
+            },
+            create: {
+                sessionId: params.sessionId,
+                questionId: params.questionId,
+                // selectedChoiceId: params.selectedChoidId,
+                attemptNumber: params.attemptNumber,
+                isCorrect: params.isCorrect
             }
         });
-
     }
 
     static retriveSessionData = async (params: { sessionId: string }) => {
