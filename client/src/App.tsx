@@ -6,6 +6,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import LandingPage from "./pages/LandingPage";
 import QuizPage from "./pages/QuizPage";
 import ReviewPage from "./pages/ReviewPage";
+import RolesPage from "./pages/RolesPage";
 import SummaryPage from "./pages/SummaryPage";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<LandingPage />} />
+          <Route path="/roles" element={<RolesPage />} />
           <Route path="/summary" element={<SummaryPage />} />
           <Route path="/quiz" element={<QuizPage />} />
           <Route path="/review" element={<ReviewPage />} />

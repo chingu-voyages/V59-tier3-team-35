@@ -10,6 +10,7 @@ interface FlashCardActions {
   fetchQuestions: (roleKey: Role) => Promise<void>;
   setQuestions: (questions: Question[]) => void;
   setCurrentQuestionIndex: (index: number) => void;
+  setSelectedAnswer: (index: number | null) => void;
   decrementLives: () => void;
   incrementScore: () => void;
   endQuiz: () => void;
@@ -21,6 +22,7 @@ type FlashCardState = {
   missedQuestions: MissedQuestion[];
   status: "loading" | "error" | "ready" | "success" | "gameover";
   currentQuestionIndex: number;
+  selectedAnswer: number | null;
   lives: number;
   score: number;
   flipped: boolean;
@@ -32,6 +34,7 @@ const useFlashCardStore = create<FlashCardState>((set) => ({
   missedQuestions: [],
   status: "ready",
   currentQuestionIndex: 0,
+  selectedAnswer: null,
   lives: 3,
   score: 0,
   flipped: false,
@@ -53,6 +56,7 @@ const useFlashCardStore = create<FlashCardState>((set) => ({
     flip: () => set((state) => ({ flipped: !state.flipped })),
     setCurrentQuestionIndex: (index: number) =>
       set({ currentQuestionIndex: index }),
+    setSelectedAnswer: (index: number | null) => set({ selectedAnswer: index }),
     decrementLives: () =>
       set((state) => {
         const newLives = Math.max(0, state.lives - 1);
@@ -93,6 +97,9 @@ export const useMissedQuestions = () =>
   useFlashCardStore((state) => state.missedQuestions);
 
 export const useStatus = () => useFlashCardStore((state) => state.status);
+
+export const useSelectedAnswer = () =>
+  useFlashCardStore((state) => state.selectedAnswer);
 
 export const useFlipped = () => useFlashCardStore((state) => state.flipped);
 

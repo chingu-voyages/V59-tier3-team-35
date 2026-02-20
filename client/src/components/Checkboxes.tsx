@@ -1,16 +1,16 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   useCurrentQuestionIndex,
   useFlashCardActions,
   useFlipped,
   useQuestions,
+  useSelectedAnswer,
   useStatus,
 } from "../stores/flashcardStore";
 import { cn } from "../utils/cn";
 
 export default function Checkboxes() {
-  const [selected, setSelected] = useState<number | null>(null);
+  const selected = useSelectedAnswer();
 
   const navigate = useNavigate();
 
@@ -28,13 +28,13 @@ export default function Checkboxes() {
 
   const flipped = useFlipped();
 
-  const { flip, incrementScore } = useFlashCardActions();
+  const { flip, incrementScore, setSelectedAnswer } = useFlashCardActions();
 
   const handleCheckboxChange = (index: number) => {
     if (selected == index) {
-      setSelected(null);
+      setSelectedAnswer(null);
     } else {
-      setSelected(index);
+      setSelectedAnswer(index);
     }
   };
 
@@ -63,7 +63,7 @@ export default function Checkboxes() {
       return;
     }
     setCurrentQuestionIndex(currentQuestionIndex + 1);
-    setSelected(null);
+    setSelectedAnswer(null);
     flip();
   };
 
@@ -115,7 +115,9 @@ export default function Checkboxes() {
       <button
         className={cn(
           "border-accent-secondary hover:bg-accent-secondary hover:text-primary ml-auto w-fit cursor-pointer rounded-2xl border-2 px-16 py-2 text-center transition-opacity",
-          selected === null ? "pointer-events-none opacity-0" : "",
+          !flipped && selected === null
+            ? "pointer-events-none opacity-0"
+            : "opacity-100",
         )}
         onClick={flipped ? handleNext : handleCheckAnswer}
       >

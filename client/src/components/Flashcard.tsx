@@ -7,11 +7,12 @@ import {
   useLives,
   useQuestions,
 } from "../stores/flashcardStore";
+import { useRole } from "../stores/userStore";
 import { cn } from "../utils/cn";
 import Checkboxes from "./Checkboxes";
 
 export default function Flashcard() {
-  const roleTitle = "WEB_DEVELOPER";
+  const roleTitle = useRole();
 
   const currentLives = useLives();
 
@@ -19,6 +20,7 @@ export default function Flashcard() {
 
   useEffect(() => {
     console.log("Fetching questions...");
+    if (!roleTitle) return;
     fetchQuestions(roleTitle);
   }, []);
 
@@ -38,7 +40,7 @@ export default function Flashcard() {
         <div className="bg-background absolute inset-0 z-10 opacity-75" />
         <div className="relative z-10 flex flex-col gap-8 p-4 px-6 md:p-8 md:px-12">
           <h2 className="text-center text-3xl font-semibold capitalize lg:text-4xl">
-            {roleTitle.replace(/_/g, " ")}
+            {roleTitle?.replace(/_/g, " ")}
           </h2>
           <div className="flex items-center gap-2">
             <progress
