@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import BrushIcon from "../icons/brushIcon";
+import BrushIcon from "../icons/BrushIcon";
 import BullhornIcon from "../icons/BullhornIcon";
 import ClipboardIcon from "../icons/ClipboardIcon";
 import CodeIcon from "../icons/CodeIcon";
-import PythonIcon from "../icons/pythonIcon";
+import PythonIcon from "../icons/PythonIcon";
 import { useUserActions } from "../stores/userStore";
 import type { Role } from "../types/Role";
 
