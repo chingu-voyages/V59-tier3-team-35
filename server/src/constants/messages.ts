@@ -51,4 +51,5 @@ export const STRINGS = {
     LoginSuccess: "Login Successful!",
     RegistrationSuccess: "Registration Successful!",
     LoggedOut: "Logged out successfully!",
+    SessionSuccess: "Session created successfully!"
 }

@@ -5,6 +5,10 @@ import {
   paginationQuerySchema,
 } from "./builders";
 
+import {
+   practiceSessionSchema
+} from "@/schemas/practicesession";
+
 // Choice entity schema
 export const choiceSchema = {
   type: "object",
@@ -35,6 +39,19 @@ export const questionSchema = {
     }
   }
 } as const;
+
+export const questionAttemptSchema = {
+  type: "object",
+  properties: {
+    id: { type: "string" },
+    sessionId: { type: "string" },
+    questionId: { type: "string" },
+    selectedChoiceId: { type: "string"},
+    attemptNumber: { type: "number"},
+    isCorrect: { type: "boolean"},
+    createdAt: { type: "string", format: "date-time" },
+  }
+}
 
 // GET /questions - List questions
 export const getQuestionsSchema = {
@@ -141,3 +158,28 @@ export const updateQuestionSchema = {
     500: constructErrorResponse()
   }
 } as const;
+
+export const questionAttemptRecordResponse = {
+    type: "object",
+    properties: {
+      msg: { type: "string" }
+    }
+}
+
+
+export const recordQuestionAttemptSchema = {
+  tags: ["Questions"],
+  description: "Record question attempt",
+  params: {
+    type: "object",
+    required: ["sessionid"],
+    properties: {
+      ...questionAttemptSchema.properties
+    }
+  },
+  response: {
+    201: constructSuccessResponse(questionAttemptRecordResponse),
+    404: constructErrorResponse(),
+    500: constructErrorResponse()
+  }
+}
